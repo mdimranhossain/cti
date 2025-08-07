@@ -1,59 +1,67 @@
-# 🛡️ Cyber Threat Intelligence (CTI) Automation & Sharing - PoC
+# Cyber Threat Intelligence (CTI) Automation and Sharing Platform
 
-A full-featured Proof-of-Concept (PoC) platform for Cyber Threat Intelligence (CTI) automation, enrichment, sharing, and analytics. Designed to demonstrate secure, intelligent, and scalable CTI management through integration with MISP, TAXII, AI/NLP, and STIX format with multi-user access.
-
----
-
-## 📌 Features
-
-✅ CTI Data Ingestion & STIX Bundle Generation  
-✅ TAXII 2.1 Server Integration  
-✅ MISP Integration using PyMISP  
-✅ AI-Powered Threat Enrichment (OpenAI or local NLP)  
-✅ Threat Scoring Algorithm with Visual Dashboards  
-✅ Role-Based Access Control using Flask-Security  
-✅ Multi-user Authentication and Session Management  
-✅ Export CTI Reports as PDF  
-✅ PostgreSQL Database  
-✅ Job Scheduler for Automated Feeds  
-✅ Docker Support & `.env` Configuration  
-✅ Frontend built with Bootstrap for Analysts
+> A comprehensive and extensible platform for collecting, enriching, scoring, visualizing, and sharing cyber threat intelligence using STIX, TAXII, MISP, OpenAI, and PostgreSQL.
 
 ---
 
-## 🔧 Tech Stack
+## 🔐 Project Summary
 
-| Layer         | Technologies Used                                      |
-|--------------|--------------------------------------------------------|
-| Backend      | Python, Flask, Flask-SQLAlchemy, Flask-Security        |
-| Frontend     | Bootstrap, jQuery, Chart.js                            |
-| Database     | PostgreSQL                                             |
-| CTI Exchange | MISP, TAXII (cabby, medallion)                         |
-| AI Enrichment| OpenAI API or spaCy/NLTK for NLP tagging               |
-| Auth System  | Flask-Security with roles: Admin, Analyst, Viewer      |
-| Export       | ReportLab for PDF export                               |
-| Deployment   | Docker + CPanel (manual), VPS supported                |
+This CTI Automation and Sharing Proof of Concept (PoC) is built to demonstrate a real-world, research-backed implementation of Cyber Threat Intelligence sharing with automation, enrichment, and collaboration support. It integrates several threat sources, uses AI-assisted enrichment, enables STIX 2.x bundle handling, supports TAXII protocol, and includes a Bootstrap-powered frontend for analysts and researchers.
 
 ---
 
-## 📁 Project Structure
+## ⚙️ Key Features
 
-```bash
+### 🧠 AI & Enrichment
+- Automatic enrichment of threat indicators using OpenAI
+- Entity tagging (malware families, techniques, actors)
+- Threat scoring and classification
+
+### 📡 CTI Integration
+- Import from **MISP**, **MITRE ATT&CK**, **VirusTotal**, and other feeds
+- Export as STIX bundles
+- TAXII 2.1 API support for automated sharing
+
+### 📊 Dashboard & Visualization
+- STIX bundle analytics dashboard (indicators, tactics, trends)
+- Threat statistics by time, source, and severity
+- Bootstrap-powered responsive UI
+
+### 🛡️ User Management
+- Flask-Security for login, registration, and roles
+- Admins, analysts, and viewers
+- Session management and password reset
+
+### 📄 Reporting
+- PDF export of threat reports (STIX bundles or custom summaries)
+
+---
+
+## 🗂️ Project Structure
+
 cti/
 ├── app/
-│   ├── __init__.py
-│   ├── routes/
-│   ├── models/
-│   ├── templates/
-│   ├── static/
-│   └── utils/
-├── migrations/
-├── instance/
-│   └── config.py
-├── .env
+│ ├── init.py
+│ ├── routes/
+│ │ ├── dashboard.py
+│ │ ├── auth.py
+│ │ └── api.py
+│ ├── models/
+│ │ └── stix_entities.py
+│ ├── templates/
+│ │ ├── dashboard.html
+│ │ └── ...
+│ └── static/
+│ └── css/
+├── scheduler/
+│ └── fetch_from_misp.py
+├── pdf_export/
+│ └── report_generator.py
+├── ai_enrichment/
+│ └── enrich.py
+├── taxii/
+│ └── taxii_server.py
 ├── run.py
-├── Dockerfile
-├── docker-compose.yml
 ├── requirements.txt
-├── README.md
-└── .gitignore
+├── .env
+└── README.md
